@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pulse — CSS &amp; Interaction Pattern Collection</title>
+<meta name="description" content="A hand-built collection of CSS & interaction UI patterns: hover states, glassmorphism, gradients, a command palette, a CSS-only modal, and a live flexbox/grid switcher." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🩷</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,680;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="topbar">
+  <a class="brand" href="#top">
+    <span class="brand-mark" aria-hidden="true"></span>
+    Pulse
+  </a>
+
+  <nav class="topnav" aria-label="Primary">
+    <a href="#layout">Layout</a>
+    <a href="#hover">Hover &amp; Motion</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#glass">Glass &amp; Gradient</a>
+    <a href="#modal">Modal</a>
+  </nav>
+
+  <div class="topbar-actions">
+    <button class="btn-ghost" id="paletteTrigger" type="button">
+      <span>Command palette</span>
+      <kbd class="kbd-combo"><kbd>⌘</kbd><kbd>K</kbd></kbd>
+    </button>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+      <span class="theme-toggle-track">
+        <span class="theme-toggle-thumb"></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="hero-kicker">Topic 09 · CSS &amp; Interaction</p>
+      <h1 class="hero-title">Interfaces that respond<br />before you finish clicking.</h1>
+      <p class="hero-sub">
+        Fourteen interaction patterns, built from first principles in plain HTML, CSS
+        and a little JavaScript — no frameworks, no component libraries, nothing
+        copied from another site. Press <kbd>⌘</kbd><kbd>K</kbd> and try the palette.
+      </p>
+      <div class="hero-actions">
+        <a href="#gallery" class="btn-primary">Browse the gallery</a>
+        <a href="#hover" class="btn-secondary">See it move</a>
+      </div>
+      <dl class="hero-stats">
+        <div><dt>14</dt><dd>interaction patterns</dd></div>
+        <div><dt>0</dt><dd>external UI libraries</dd></div>
+        <div><dt>2</dt><dd>themes, one switch</dd></div>
+      </dl>
+    </div>
+
+    <div class="hero-stage" aria-hidden="true">
+      <div class="stage-orb stage-orb--a"></div>
+      <div class="stage-orb stage-orb--b"></div>
+      <div class="stage-card" id="magnetCard">
+        <div class="stage-card-glow"></div>
+        <p class="stage-card-eyebrow">Magnetic hover</p>
+        <p class="stage-card-title">Move your cursor over this card.</p>
+        <div class="stage-card-bar"><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LAYOUT: FLEXBOX / GRID ============ -->
+  <section class="section" id="layout">
+    <div class="section-head">
+      <h2>One set of boxes, two ways to arrange them</h2>
+      <p>Flip the switch — the markup never changes, only the layout model driving it.</p>
+    </div>
+
+    <div class="layout-demo">
+      <div class="layout-switch" role="group" aria-label="Layout mode">
+        <button type="button" class="layout-switch-btn is-active" data-mode="flex">Flexbox</button>
+        <button type="button" class="layout-switch-btn" data-mode="grid">CSS Grid</button>
+      </div>
+
+      <div class="layout-box" id="layoutBox" data-mode="flex">
+        <div class="layout-tile" style="--h:1.4">01</div>
+        <div class="layout-tile" style="--h:1;">02</div>
+        <div class="layout-tile" style="--h:1.8;">03</div>
+        <div class="layout-tile" style="--h:1.1;">04</div>
+        <div class="layout-tile" style="--h:1.6;">05</div>
+        <div class="layout-tile" style="--h:1;">06</div>
+      </div>
+      <p class="layout-caption" id="layoutCaption">display: flex; flex-wrap: wrap; align-items: flex-end;</p>
+    </div>
+  </section>
+
+  <!-- ============ HOVER / MICRO-INTERACTIONS ============ -->
+  <section class="section" id="hover">
+    <div class="section-head">
+      <h2>Hover states &amp; micro-interactions</h2>
+      <p>Small, deliberate reactions — each card answers a different kind of touch.</p>
+    </div>
+
+    <div class="hover-grid">
+
+      <article class="hcard hcard--tilt" id="tiltCard">
+        <div class="hcard-inner">
+          <p class="hcard-tag">Tilt</p>
+          <h3>3D perspective tilt</h3>
+          <p>Tracks the cursor across the card and tilts on two axes.</p>
+        </div>
+      </article>
+
+      <article class="hcard hcard--lift">
+        <p class="hcard-tag">Lift</p>
+        <h3>Depth on hover</h3>
+        <p>Rises off the page with a widening, softening shadow.</p>
+      </article>
+
+      <article class="hcard hcard--underline">
+        <p class="hcard-tag">Reveal</p>
+        <h3>Underline sweep</h3>
+        <p class="sweep-link">Hover this line and watch it draw itself.</p>
+      </article>
+
+      <article class="hcard hcard--spin">
+        <p class="hcard-tag">Spin</p>
+        <h3>Icon rotation</h3>
+        <p>An icon that spins up on hover, not just fades.</p>
+        <span class="spin-icon" aria-hidden="true">✦</span>
+      </article>
+
+      <article class="hcard hcard--press">
+        <p class="hcard-tag">Press</p>
+        <h3>Tactile button</h3>
+        <button class="press-btn" type="button">Press me</button>
+      </article>
+
+      <article class="hcard hcard--ripple">
+        <p class="hcard-tag">Ripple</p>
+        <h3>Click ripple</h3>
+        <button class="ripple-btn" type="button">Click anywhere here</button>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ ANIMATED / SLIDING CARD GALLERY ============ -->
+  <section class="section section--bleed" id="gallery">
+    <div class="section-head">
+      <h2>Sliding card gallery</h2>
+      <p>A snap-scrolling shelf of template concepts — drag, scroll, or use the arrows.</p>
+    </div>
+
+    <div class="gallery" id="gallery-track" tabindex="0" aria-label="Template preview carousel">
+      <article class="gcard" style="--tint:#ffe1ef;">
+        <div class="gcard-swatch">SaaS</div>
+        <h3>Onboarding checklist</h3>
+        <p>Step-indicator with animated progress fill.</p>
+      </article>
+      <article class="gcard" style="--tint:#ffd0e6;">
+        <div class="gcard-swatch">Analytics</div>
+        <h3>Revenue mini-chart</h3>
+        <p>Sparkline card that redraws on data change.</p>
+      </article>
+      <article class="gcard" style="--tint:#f6c2df;">
+        <div class="gcard-swatch">Command</div>
+        <h3>Quick actions bar</h3>
+        <p>Sticky action rail with keyboard hints.</p>
+      </article>
+      <article class="gcard" style="--tint:#ffc9de;">
+        <div class="gcard-swatch">Billing</div>
+        <h3>Usage meter</h3>
+        <p>Threshold ring that shifts color near the limit.</p>
+      </article>
+      <article class="gcard" style="--tint:#f0b8d6;">
+        <div class="gcard-swatch">Settings</div>
+        <h3>Theme switcher tile</h3>
+        <p>Two-state control with a sliding indicator.</p>
+      </article>
+      <article class="gcard" style="--tint:#ffd7ea;">
+        <div class="gcard-swatch">Docs</div>
+        <h3>Copy-to-clipboard block</h3>
+        <p>Code block that confirms itself, briefly.</p>
+      </article>
+    </div>
+
+    <div class="gallery-controls">
+      <button type="button" id="galleryPrev" aria-label="Scroll gallery left">‹</button>
+      <div class="gallery-dots" id="galleryDots"></div>
+      <button type="button" id="galleryNext" aria-label="Scroll gallery right">›</button>
+    </div>
+  </section>
+
+  <!-- ============ GLASSMORPHISM + GRADIENT ============ -->
+  <section class="section glass-section" id="glass">
+    <div class="glass-bg" aria-hidden="true"></div>
+    <div class="section-head section-head--light">
+      <h2>Glassmorphism over a moving gradient</h2>
+      <p>Frosted panels catch the light differently depending on what sits behind them.</p>
+    </div>
+
+    <div class="glass-grid">
+      <div class="glass-card">
+        <p class="glass-card-label">Frosted</p>
+        <h3>backdrop-filter: blur(20px)</h3>
+        <p>A translucent surface with a soft inner border and grain.</p>
+      </div>
+      <div class="glass-card glass-card--wide">
+        <p class="glass-card-label">Fluid type</p>
+        <h3 class="fluid-demo">Aa</h3>
+        <p>Resize the window — this headline scales with <code>clamp()</code>, not breakpoints.</p>
+      </div>
+      <div class="glass-card">
+        <p class="glass-card-label">Gradient text</p>
+        <h3 class="gradient-text">Pink to plum</h3>
+        <p>Text filled with the same gradient as the background mesh.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CSS-ONLY MODAL ============ -->
+  <section class="section" id="modal">
+    <div class="section-head">
+      <h2>A modal with zero JavaScript</h2>
+      <p>This dialog opens, traps focus visually, and closes — driven entirely by <code>:target</code>.</p>
+    </div>
+
+    <div class="modal-launch">
+      <a href="#css-modal" class="btn-primary">Open CSS-only modal</a>
+      <p class="modal-note">No <code>addEventListener</code> involved — inspect the source.</p>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="css-modal">
+    <a href="#modal" class="modal-overlay-bg" aria-label="Close dialog"></a>
+    <div class="modal-box" role="dialog" aria-label="CSS only dialog">
+      <p class="modal-kicker">Pure CSS</p>
+      <h3>How this works</h3>
+      <p>
+        The trigger is an anchor link to <code>#css-modal</code>. The overlay is
+        positioned off-screen until it matches <code>:target</code>, at which point
+        opacity, transform and pointer-events all switch on together. Closing is
+        just another anchor, back to <code>#modal</code>.
+      </p>
+      <a href="#modal" class="btn-secondary modal-close">Close</a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Built as a standalone CSS &amp; interaction pattern set — HTML, CSS and vanilla JS only.</p>
+  <p class="footer-shortcuts">
+    <kbd>⌘</kbd><kbd>K</kbd> palette &nbsp;·&nbsp;
+    <kbd>⌘</kbd><kbd>D</kbd> theme &nbsp;·&nbsp;
+    <kbd>Esc</kbd> close
+  </p>
+</footer>
+
+<!-- ============ COMMAND PALETTE ============ -->
+<div class="palette-overlay" id="paletteOverlay">
+  <div class="palette-box" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="palette-input-row">
+      <span class="palette-icon" aria-hidden="true">⌘</span>
+      <input type="text" id="paletteInput" placeholder="Type a command or search a section…" autocomplete="off" />
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="palette-list" id="paletteList"></ul>
+    <div class="palette-footer">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> select</span>
+      <span><kbd>Esc</kbd> dismiss</span>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
